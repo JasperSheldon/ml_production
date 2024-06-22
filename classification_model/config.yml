@@ -1,0 +1,55 @@
+# Package Overview
+package_name: classification_model
+
+# Data Files
+raw_data_file: titanic.csv
+training_data_file: train.csv
+test_data_file: test.csv
+
+# Variables
+# The variable we are attempting to predict (sale price)
+target: survived
+
+pipeline_name: titanic_classification_model
+pipeline_save_file: titanic_classification_model_output_v
+
+features:
+  - pclass
+  - sex
+  - age
+  - sibsp
+  - parch
+  - fare
+  - cabin
+  - embarked
+  - title  # generated from name
+
+# set train/test split
+test_size: 0.1
+
+# to set the random seed
+random_state: 0
+max_depth: 7
+n_estimators: 400
+
+unused_fields:
+  - name
+  - ticket
+  - boat
+  - body
+  - home.dest
+
+numerical_vars:
+  - age
+  - fare
+
+categorical_vars:
+  - sex
+  - cabin
+  - embarked
+  - title
+  - sibsp
+  - parch
+
+cabin_vars:
+  - cabin
