@@ -14,14 +14,16 @@ def make_prediction(*,input_data:t.Union[pd.DataFrame,dict],)->dict :
 
     data=pd.DataFrame(input_data)
     validated_data,errors=validate_inputs(input_data=data)
-    results = {"predictions": None, "version": _version, "errors": errors}
+    results = {"predictions": None, "probability":None,"version": _version, "errors": errors}
 
     if not errors:
         predicitions = _titanic_pipe.predict(
             X=validated_data[config.model_config.features]
         )
+        predicition_prob=_titanic_pipe.predict_proba(X=validated_data[config.model_config.features])
         results={
             "predictions": predicitions, 
+            "probability":predicition_prob,
             "version": _version, 
             "errors": errors
             }

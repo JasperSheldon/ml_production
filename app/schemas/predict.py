@@ -7,7 +7,9 @@ from classification_model.processing.validation import TitanicDataInputSchema
 class PredictionResults(BaseModel):
     errors:Optional[Any]
     version:str
-    predictions:Optional[List[int]]
+    predictions:Optional[int]
+    probability:Optional[Any]
+    
 
 
 class MultipleTitanicInputs(BaseModel):
@@ -30,6 +32,7 @@ class MultipleTitanicInputs(BaseModel):
                         "embarked": "S",
                         "boat": None,
                         "body": None
+
                     }
                 ]
             }
